@@ -1,10 +1,10 @@
 stations = ['S1', 'S2', 'S3', 'S4']
-trains = ['T1', 'T2', 'T3']  # Added T3 to the train list
+trains = ['T1', 'T2', 'T3']
 tracks = {
-    ('S1', 'S2'): 10,  # travel time in minutes
+    ('S1', 'S2'): 10,
     ('S2', 'S3'): 7,
     ('S3', 'S4'): 9,
-    ('S2', 'S1'): 10,  # Allow reverse travel with the same time as forward
+    ('S2', 'S1'): 10,
     ('S3', 'S2'): 7,
     ('S4', 'S3'): 9
 }
@@ -46,14 +46,13 @@ def cost_function(schedule):
                 conflicts += len(common_sections)
                 print(f"Conflict detected between {train_i} and {train_j} on sections: {common_sections}")
 
-    large_penalty = 100  # Set a high penalty for each conflict
+    large_penalty = 100
     print(f"Total conflicts: {conflicts}")
     return total_time + conflicts * large_penalty
 
 sample_schedule = {
     'T1': ['S1', 'S2', 'S3', 'S4'],
-    'T2': ['S4', 'S3', 'S2'],  # Reversed path that is valid
-
+    'T2': ['S4', 'S3', 'S2'],
 }
 
 cost = cost_function(sample_schedule)
